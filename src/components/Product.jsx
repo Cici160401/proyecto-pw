@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 
@@ -7,11 +7,19 @@ const MAX_RATING = 2;
 const MIN_RATING = 1;
 
 function Product({ id, title, price, description, category, image }) {
-  const [rating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MAX_RATING
-  );
-  const [hasPrime] = useState(Math.random() < 0.5);
+  const[rating, setRating] = useState(0);
 
+  const [hasPrime, setIsPrimeEnabled] = useState(0);
+
+  useEffect(() => {
+    setRating(
+        Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) +
+            MIN_RATING
+    );
+    setIsPrimeEnabled(Math.random() < 0.5);
+}, []); 
+
+  
   return (
     <div className="relative flex flex-col m-5 bg-white z-30 p-10 ">
       <p className="absolute flex top-2 right-2 text-xs italic text-gray-400">

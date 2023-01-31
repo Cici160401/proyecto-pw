@@ -1,7 +1,7 @@
-import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
 
-export const authOptions = {
+export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     Providers.Google({
@@ -10,5 +10,4 @@ export const authOptions = {
     }),
     // ...add more providers here  
   ], 
-}
-export default NextAuth(authOptions)
+})
